@@ -17,6 +17,8 @@ def main():
     remote_branch = os.environ.get("PRE_COMMIT_REMOTE_BRANCH", "")
     if remote_branch.startswith("refs/heads/"):
         branch = remote_branch[len("refs/heads/"):]
+    elif os.environ.get("GITHUB_ACTIONS") == "true":
+        branch = os.environ.get("GITHUB_HEAD_REF") or os.environ.get("GITHUB_REF_NAME", "")
     else:
         _, branch = git("rev-parse", "--abbrev-ref", "HEAD")
     if branch in bases:
