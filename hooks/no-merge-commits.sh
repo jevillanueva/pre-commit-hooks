@@ -7,7 +7,7 @@ to_ref="${PRE_COMMIT_TO_REF:-HEAD}"
 branch="$(git rev-parse --abbrev-ref "$to_ref" 2>/dev/null || echo "$to_ref")"
 
 # Only validate feature/fix style branches, not the base branches themselves.
-bases="${NO_MERGE_BASE_BRANCHES:-main master develop}"
+bases="${NO_MERGE_BASE_BRANCHES:-main master dev develop stg staging}"
 for b in $bases; do
   [ "$branch" = "$b" ] && exit 0
 done
