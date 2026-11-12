@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "no-merge-commits"
+version = "0.2.0"
+description = "pre-push hook that rejects merge commits (rebase-only workflow)"
+requires-python = ">=3.8"
+
+[project.scripts]
+no-merge-commits = "no_merge_commits.main:main"
+
+[tool.setuptools]
+packages = ["no_merge_commits"]

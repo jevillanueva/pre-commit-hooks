@@ -1,8 +1,8 @@
 - id: no-merge-commits
   name: no merge commits
   description: Reject pushes whose branch contains merge commits (rebase-only workflow).
-  entry: hooks/no-merge-commits.sh
-  language: script
+  entry: no-merge-commits
+  language: python
   stages: [pre-push]
   always_run: true
   pass_filenames: false
