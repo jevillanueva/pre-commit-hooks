@@ -20,6 +20,7 @@ def main():
     else:
         _, branch = git("rev-parse", "--abbrev-ref", "HEAD")
     if branch in bases:
+        sys.stderr.write(f"Branch '{branch}' is a base branch, skipping merge check.\n")
         return 0
 
     exclude = []
@@ -33,6 +34,7 @@ def main():
     _, out = git("rev-list", "--merges", to_ref, "--not", *exclude)
     merges = out.split()
     if not merges:
+        sys.stderr.write(f"No merge commits found on branch '{branch}'.\n")
         return 0
 
     sys.stderr.write(
