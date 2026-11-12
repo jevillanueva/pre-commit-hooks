@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 
-DEFAULT_BASES = "main master develop"
+DEFAULT_BASES = "main master develop dev staging stg"
 
 
 def git(*args):
